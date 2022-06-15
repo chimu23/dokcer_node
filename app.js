@@ -1,9 +1,18 @@
 const app = require('express')()
 
-console.log('running');
+const TodoModel = require('./Schema/todo.js')
 
-app.use('/', (req, res) => {
-    res.send('hello world')
+app.use(require('cors')())
+
+app.get('/', (req, res) => {
+    new TodoModel({
+        content: Date.now(),
+        done: false
+    })
+        .save()
+        .then(doc => {
+            res.send(doc)
+        })
 })
 
 app.listen(8090, () => {
