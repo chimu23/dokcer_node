@@ -16,10 +16,10 @@ require('./routes/admin')(app)
 //     res.send('register')
 // })
 
-// app.use('/', async (req, res) => {
-//     console.log(req.body)
-//     res.send('register')
-// })
+app.use('/test', async (req, res) => {
+    const d = new Date().toLocaleString()
+    res.send(d)
+})
 
 app.listen(PORT, () => {
     console.log(`running on ${PORT}`)
