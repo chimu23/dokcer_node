@@ -4,17 +4,19 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "cross-env ENV=development VERSION=0.01 nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
-    "mongodb": "^4.7.0",
-    "mongoose": "^6.3.8"
-  },
-  "devDependencies": {
-    "cors": "^2.8.5"
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^5.0.0-alpha.7",
+    "http-assert": "^1.4.1",
+    "inflection": "^1.12.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.8",
+    "require-all": "^3.0.0"
   }
 }

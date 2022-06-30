@@ -1,20 +1,26 @@
-const app = require('express')()
+const express = require('express')
+const { PORT, SECRET } = require('./utils/config.js')()
 
-const TodoModel = require('./Schema/todo.js')
+const app = express()
+
+app.set('secret', SECRET)
 
 app.use(require('cors')())
+app.use(express.json())
 
-app.get('/', (req, res) => {
-    new TodoModel({
-        content: Date.now(),
-        done: false
-    })
-        .save()
-        .then(doc => {
-            res.send(doc)
-        })
-})
+require('./utils/conn')
+require('./routes/admin')(app)
 
-app.listen(8090, () => {
-    'running on 8090'
+// app.use('/admin/api/user/register', async (req, res) => {
+//     console.log(req.body)
+//     res.send('register')
+// })
+
+// app.use('/', async (req, res) => {
+//     console.log(req.body)
+//     res.send('register')
+// })
+
+app.listen(PORT, () => {
+    console.log(`running on ${PORT}`)
 })
